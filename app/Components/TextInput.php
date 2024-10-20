@@ -11,8 +11,11 @@ use Livewire\Component;
 class TextInput implements Htmlable
 {
     protected string | Closure $label;
+    protected int | Closure | null $maxLength = null;
 
     protected Component $livewire;
+
+    protected static array $configurations = [];
 
     public function __construct(
         protected string $name,
@@ -20,18 +23,36 @@ class TextInput implements Htmlable
 
     public static function make($name): self
     {
-        return new self($name);
+        $input =  new self($name);
+
+        foreach (self::$configurations as $configuration) {
+            $configuration($input);
+        }
+
+        return $input;
     }
 
-    public function label(string | Closure $label): self
+    public static function configureUsing(Closure $configure): void
     {
-        $this->label = $label;
+        self::$configurations[] = $configure;
+    }
+
+    public function maxLength(int | Closure | null $length)
+    {
+        $this->maxLength = $length;
+
         return $this;
     }
 
     public function livewire(Component $livewire)
     {
         $this->livewire = $livewire;
+        return $this;
+    }
+
+    public function label(string | Closure $label): self
+    {
+        $this->label = $label;
         return $this;
     }
 
@@ -68,6 +89,11 @@ class TextInput implements Htmlable
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getMaxLength(): ?int
+    {
+        return $this->evaluate($this->maxLength);
     }
 
     public function render(): View
