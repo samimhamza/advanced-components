@@ -6,10 +6,12 @@ use Closure;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
 use Livewire\Component;
 
 class TextInput implements Htmlable
 {
+    use Macroable;
     protected string | Closure $label;
     protected int | Closure | null $maxLength = null;
 
@@ -65,7 +67,6 @@ class TextInput implements Htmlable
     {
         if ($value instanceof Closure) {
             return app()->call($value, [
-                'foo' => 'bar',
                 'random' => Str::random(),
                 'state' => $this->livewire->{$this->getName()},
             ]);
