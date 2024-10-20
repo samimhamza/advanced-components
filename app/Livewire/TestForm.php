@@ -21,7 +21,6 @@ class TestForm extends Component
         TextInput::macro('foo', fn() => dd('bar'));
 
         $nameInput = TextInput::make('name')
-            ->foo()
             ->livewire($this);
 
         $emailInput = TextInput::make('email')
