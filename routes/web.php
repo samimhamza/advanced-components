@@ -1,11 +1,6 @@
 <?php
 
-use App\Components\TextInput;
+use App\Livewire\TestForm;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $input = TextInput::make('Email');
-    return view('welcome', [
-        'input' => $input
-    ]);
-});
+Route::get('/', TestForm::class);
