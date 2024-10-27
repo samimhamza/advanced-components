@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Forms\Components;
+namespace App\Infolists\Components;
 
 use App\Traits\CanBeSection;
-use Filament\Forms\Components\Component;
+use Filament\Infolists\Components\Component;
 
 class Section extends Component
 {
     use CanBeSection;
-
     protected string $view = 'livewire.section';
 }
