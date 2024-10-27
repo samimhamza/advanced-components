@@ -6,10 +6,9 @@ use Filament\Forms\Components\Field;
 
 class ColorPicker extends Field
 {
+    protected string $view = 'forms.components.color-picker';
 
     public int | \Closure | null $width = null;
-
-    protected string $view = 'forms.components.color-picker';
 
     public function width(int | \Closure | null $width): static
     {
