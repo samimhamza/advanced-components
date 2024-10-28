@@ -21,7 +21,7 @@ class DemoTable extends Component implements HasForms, HasTable
         return $table
             ->query(User::query())
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextInputColumn::make('name'),
                 ColorColumn::make('color'),
             ]);
     }
