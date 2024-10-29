@@ -10,7 +10,6 @@
 
     <title>{{ $title ?? 'Page Title' }}</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     <style>
         [x-cloak] {
             display: none !important;

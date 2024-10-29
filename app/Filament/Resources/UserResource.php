@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
-use App\Tables\Columns\ColorColumn;
+use SamimHamza\FilamentToolkit\Tables\Columns\ColorColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use SamimHamza\FilamentToolkit\Tables\Filters\DateRangeFilter;
 
 class UserResource extends Resource
 {
@@ -34,9 +35,12 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextInputColumn::make('name'),
                 ColorColumn::make('color'),
+                Tables\Columns\TextColumn::make('email_verified_at')
+                    ->since(),
             ])
             ->filters([
-                //
+                DateRangeFilter::make('email_verified_at')
+                    ->maxDate(now()->addMonth()),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
