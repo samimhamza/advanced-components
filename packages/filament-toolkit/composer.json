@@ -1,0 +1,27 @@
+{
+    "name": "samimhamza/filament-toolkit",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SamimHamza\\FilamentToolkit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "samimhamza",
+            "email": "samim.hamza7@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "filament/support": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SamimHamza\\FilamentToolkit\\FilamentToolkitServiceProvider"
+            ]
+        }
+    }
+}
